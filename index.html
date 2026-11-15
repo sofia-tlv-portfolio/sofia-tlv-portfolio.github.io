@@ -118,14 +118,14 @@ dialog::backdrop { background: var(--bg) }
     <div>
       <p>Sofia is a painter based in Tel Aviv. Her work draws on 1990s music television, maximalist pop culture and the everyday life of her city: falafel stands, barbers, nail salons and second-hand shops, painted in flat, saturated colour.</p>
       <p>All works shown are one-off originals. For enquiries:</p>
-      <p class="contact"><a href="https://wa.me/972547652279" target="_blank" rel="noopener">WhatsApp +972 54-765-2279</a><br><a href="mailto:lindgrenzivicsofia@gmail.com">lindgrenzivicsofia@gmail.com</a></p>
+      <p class="contact" data-contact></p>
     </div>
   </section>
 </main>
 
 <footer class="wrap">
   <span>© Sofia-Tlv</span>
-  <span><a href="https://wa.me/972547652279" target="_blank" rel="noopener">WhatsApp +972 54-765-2279</a><br><a href="mailto:lindgrenzivicsofia@gmail.com">lindgrenzivicsofia@gmail.com</a></span>
+  <span data-contact-foot></span>
   <a href="#top">Back to top ↑</a>
 </footer>
 
@@ -220,6 +220,16 @@ lb.addEventListener("keydown", e => {
   if (e.key === "ArrowRight") show(cur + 1);
 });
 render("all");
+
+// Contact links are assembled here so the address is not plain text in the HTML.
+(function () {
+  const mail = ["lindgrenzivicsofia", "gmail.com"].join("@");
+  const wa = "https://wa.me/" + ["972", "547652279"].join("");
+  const shown = "+972 54-765-2279";
+  const block = `<a href="${wa}" target="_blank" rel="noopener">WhatsApp ${shown}</a><br><a href="mailto:${mail}">${mail}</a>`;
+  document.querySelectorAll("[data-contact]").forEach(el => el.innerHTML = block);
+  document.querySelectorAll("[data-contact-foot]").forEach(el => el.innerHTML = block);
+})();
 </script>
 </body>
 </html>

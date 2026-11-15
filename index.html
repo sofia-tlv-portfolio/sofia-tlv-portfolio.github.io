@@ -57,6 +57,7 @@ figcaption span { display: block; color: var(--muted) }
 .about h2 { margin: 0; font-size: 1rem; font-weight: 500 }
 .about p { margin: 0 0 1.2em; max-width: 34em }
 .about a { border-bottom: 1px solid var(--ink) }
+.about p.contact { line-height: 1.9 }
 
 footer { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; padding-block: 28px 40px; border-top: 1px solid var(--rule); color: var(--muted); font-size: .82rem }
 
@@ -94,8 +95,6 @@ dialog::backdrop { background: var(--bg) }
   <nav aria-label="Main">
     <a href="#work">Work</a>
     <a href="#about">About</a>
-    <a href="https://wa.me/972547652279" target="_blank" rel="noopener">WhatsApp</a>
-    <a href="mailto:lindgrenzivicsofia@gmail.com">Email</a>
   </nav>
 </header>
 
@@ -118,15 +117,15 @@ dialog::backdrop { background: var(--bg) }
     <h2>About</h2>
     <div>
       <p>Sofia is a painter based in Tel Aviv. Her work draws on 1990s music television, maximalist pop culture and the everyday life of her city: falafel stands, barbers, nail salons and second-hand shops, painted in flat, saturated colour.</p>
-      <p>All works shown are one-off originals. For enquiries, write on WhatsApp at +972 54-765-2279 or by email to <a href="mailto:lindgrenzivicsofia@gmail.com">lindgrenzivicsofia@gmail.com</a>.</p>
+      <p>All works shown are one-off originals. For enquiries:</p>
+      <p class="contact"><a href="https://wa.me/972547652279" target="_blank" rel="noopener">WhatsApp +972 54-765-2279</a><br><a href="mailto:lindgrenzivicsofia@gmail.com">lindgrenzivicsofia@gmail.com</a></p>
     </div>
   </section>
 </main>
 
 <footer class="wrap">
   <span>© Boomboxpopart</span>
-  <a href="https://wa.me/972547652279" target="_blank" rel="noopener">WhatsApp</a>
-  <a href="mailto:lindgrenzivicsofia@gmail.com">Email</a>
+  <span><a href="https://wa.me/972547652279" target="_blank" rel="noopener">WhatsApp +972 54-765-2279</a><br><a href="mailto:lindgrenzivicsofia@gmail.com">lindgrenzivicsofia@gmail.com</a></span>
 </footer>
 
 <dialog id="lb" aria-label="Work">

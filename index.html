@@ -227,9 +227,9 @@ render("all");
 
 // Contact links are assembled here so the address is not plain text in the HTML.
 (function () {
-  const mail = ["lindgrenzivicsofia", "gmail.com"].join("@");
-  const wa = "https://wa.me/" + ["972", "547652279"].join("");
-  const shown = "+972 54-765-2279";
+  const mail = [["lindgren", "zivic", "sofia"].join(""), ["gmail", "com"].join(".")].join("@");
+  const wa = "https://wa.me/" + ["972", "54", "765", "2279"].join("");
+  const shown = ["+972 54", "765", "2279"].join("-");
   const block = `<a href="${wa}" target="_blank" rel="noopener">WhatsApp ${shown}</a><br><a href="mailto:${mail}">${mail}</a>`;
   document.querySelectorAll("[data-contact]").forEach(el => el.innerHTML = block);
   document.querySelectorAll("[data-contact-foot]").forEach(el => el.innerHTML = block);

@@ -45,6 +45,7 @@ nav { display: flex; gap: 28px }
 
 .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 80px 56px; padding-bottom: 120px }
 .work { margin: 0 }
+.group-title { grid-column: 1 / -1; margin: 0 0 -40px; font-size: .95rem; font-weight: 500; letter-spacing: .02em }
 .pic { all: unset; display: flex; align-items: flex-end; justify-content: center; aspect-ratio: 4 / 5; width: 100%; cursor: zoom-in }
 .pic img { max-width: 100%; max-height: 100%; width: auto; height: auto; display: block; transition: opacity .2s }
 .pic:hover img { opacity: .88 }
@@ -109,6 +110,7 @@ dialog::backdrop { background: var(--bg) }
       <button type="button" id="f-new" data-f="new" aria-pressed="false">New series</button>
       <button type="button" id="f-tlv" data-f="tlv" aria-pressed="false">Tel Aviv</button>
       <button type="button" id="f-pop" data-f="pop" aria-pressed="false">Pop icons</button>
+      <button type="button" id="f-nn" data-f="nn" aria-pressed="false">New new series</button>
     </div>
     <div class="grid" id="works"></div>
   </section>
@@ -157,7 +159,6 @@ const WORKS = [
   { id: "n0013", t: "New series, no. 12", m: "Acrylic on canvas", s: "15 × 15 cm", c: "new" },
   { id: "n0014", t: "New series, no. 13", m: "Acrylic on canvas", s: "15 × 15 cm", c: "new" },
   { id: "n0015", t: "New series, no. 14", m: "Acrylic on canvas", s: "15 × 15 cm", c: "new" },
-  { id: "n0016", t: "New series, no. 15", m: "Acrylic on canvas", s: "15 × 15 cm", c: "new" },
   { id: "tlv-balcony", t: "Balcony, Tel Aviv", m: "Acrylic on canvas", s: "50 × 40 cm", c: "tlv" },
   { id: "tlv-park", t: "Park Day, Tel Aviv", m: "Acrylic on canvas", s: "24 × 30 cm", c: "tlv" },
   { id: "tlv-falafel-hands", t: "Falafel Hands", m: "Acrylic on canvas", s: "50 × 40 cm", c: "tlv" },
@@ -177,7 +178,8 @@ const WORKS = [
   { id: "4588861608", t: "Postcards from Tel Aviv", m: "Acrylic on canvas", s: "Set of three, 7 × 7 cm each", c: "tlv" },
   { id: "4594359222", t: "90s Icons", m: "Acrylic on canvas", s: "Set of three, 7 × 7 cm each", c: "pop" },
   { id: "4588249037", t: "Living in Kitch", m: "Acrylic on canvas", s: "Set of three, 7 × 7 cm each", c: "pop" },
-  { id: "4592448644", t: "Mini Pop", m: "Acrylic on canvas", s: "7 cm", c: "pop" }
+  { id: "4592448644", t: "Mini Pop", m: "Acrylic on canvas", s: "7 cm", c: "pop" },
+  { id: "n0016", t: "New new series, no. 1", m: "Acrylic on canvas", s: "15 × 15 cm", c: "nn" }
 ];
 const works = document.getElementById("works");
 const detail = w => [w.m, w.s].filter(Boolean).join(", ");
@@ -185,7 +187,7 @@ let visible = WORKS;
 
 function render(filter) {
   visible = filter === "all" ? WORKS : WORKS.filter(w => w.c === filter);
-  works.innerHTML = visible.map((w, i) => `
+  works.innerHTML = visible.map((w, i) => (w.c === "nn" ? `<h2 class="group-title">New new series</h2>` : "") + `
     <figure class="work">
       <button class="pic" type="button" data-i="${i}" aria-label="View ${w.t} larger">
         <img src="img/w900/${w.id}.jpg?v=${V}" alt="${w.t}. ${detail(w)}." loading="${i < 6 ? "eager" : "lazy"}">
